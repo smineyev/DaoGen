@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.mvwsolutions</groupId>
+        <artifactId>global-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.mvwsolutions.common.android</groupId>
+    <artifactId>daogen</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Andriod DAO generator (Eclipse plugin)</name>
+
+    <scm>
+        <connection>scm:svn:file:///var/svn/repos/common/android/daogen</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/android/daogen</developerConnection>
+        <tag>HEAD</tag>
+    </scm>    
+
+    <dependencies>
+        
+        <!-- projects -->
+
+          <dependency>
+	    <groupId>com.mvwsolutions.common.android</groupId>
+	    <artifactId>dao</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+          </dependency>
+
+        <!-- third party libs -->
+        
+          <dependency>
+			<groupId>org.eclipse.equinox</groupId>
+			<artifactId>common</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>osgi</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>resources</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse.equinox</groupId>
+			<artifactId>registry</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>jobs</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse.swt.win32.win32</groupId>
+			<artifactId>x86</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>jface</artifactId>
+          </dependency>
+          <dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>workbench</artifactId>
+          </dependency>
+
+          <dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>runtime</artifactId>
+          </dependency>
+
+            <dependency>
+		<groupId>org.eclipse.jdt</groupId>
+		<artifactId>core</artifactId>
+            </dependency>
+
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+            </dependency>
+        
+
+    </dependencies>
+    
+</project>

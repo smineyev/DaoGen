@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DaoGen Plug-in
+Bundle-SymbolicName: com.mvwsolutions.daogen.DaoGen;singleton:=true
+Bundle-Version: 0.1.16
+Bundle-Activator: com.mvwsolutions.daogen.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core
+Eclipse-LazyStart: true
+Bundle-Vendor: mvwsolutions

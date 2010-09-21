@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<site>
+<description>
+	Site created for adding or updating com.mvwsolutions.DaoGen in your Eclipse configuration.
+</description>
+<feature url="features/com.mvwsolutions.daogen_7.007.007.jar"/>
+</site>

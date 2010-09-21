@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="com.mvwsolutions.daogengen.DaoGenBuilder"
+    id="com.mvwsolutions.android.daogen.plugin.DaoGenBuilder"
+    version="0.0.0"
+>
+
+   <extension
+         id="com.mvwsolutions.android.daogen.plugin.DaoGenBuilder"
+         name="com.mvwsolutions.daogengen.DaoGenBuilder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="com.mvwsolutions.android.daogen.plugin.DaoGenBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="com.mvwsolutions.daogen.DaoGenNature"
+         name="com.mvwsolutions.daogen.DaoGenNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.mvwsolutions.android.daogen.plugin.DaoGenNature">
+         </run>
+      </runtime>
+      <builder
+            id="com.mvwsolutions.daogen.DaoGenBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="DaoGen.contribution1">
+         <action
+               label="DaoGen annotation processing"
+               class="com.mvwsolutions.android.daogen.plugin.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="DaoGen.addRemoveNatureAction"
+               state="false"
+               style="toggle">
+         </action>
+      </objectContribution>
+   </extension>
+
+
+</plugin>

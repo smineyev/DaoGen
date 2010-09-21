@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.androidworks</groupId>
+        <artifactId>global-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.androidworks.common.android</groupId>
+    <artifactId>dao-annotations</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Andriod common DAO annotations</name>
+
+    <scm>
+        <connection>scm:svn:file:///var/svn/repos/common/android/dao-annotations</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/android/dao-annotations</developerConnection>
+        <tag>HEAD</tag>
+    </scm>    
+
+    <dependencies>
+        
+        <!-- projects -->
+
+        
+        <!-- third party libs -->
+        
+
+    </dependencies>
+    
+</project>

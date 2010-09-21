@@ -1,0 +1,40 @@
+<project name="daogen" default="all">
+	<property file="daogen_ant.properties"/>
+	<target name="all" depends="buildcommon,daogen_eclipse_site"/>
+	<target name="daogen_eclipse" depends="buildeclipse">
+		<mkdir dir="dist"/>
+		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="target/classes" manifest="target/classes/META-INF/MANIFEST.MF"
+		includes="com/mvwsolutions/** plugin.xml"
+		/>
+	</target>
+	<target name="daogen_eclipse_site" depends="daogen_eclipse">
+		<mkdir dir="dist/site"/>
+		<mkdir dir="dist/site/features"/>
+		<mkdir dir="dist/site/plugins" />
+		<copy todir="dist/site" file="site.xml" />
+		<replace file="dist/site/site.xml" token="7.007.007" value="${daogen.version}"/>
+		<copy todir="dist/site/plugins" file="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" />
+		<replace file="feature.xml" token="7.007.007" value="${daogen.version}"/>
+		<zip destfile="dist/site/features/com.mvwsolutions.daogen_${daogen.version}.jar"
+		basedir="."
+		includes="feature.xml"	
+		/> 
+		<zip destfile="dist/daogen_eclipse_site_${daogen.version}.jar" basedir="dist/site" includes="**"  />
+	</target>
+	<target name="buildcommon">
+		<copydir dest="target/classes" src="../Dao/target/classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="target/classes"/>
+		<delete dir="dist"/>
+	</target>
+	<target name="buildeclipse" depends="buildcommon">
+		<copy todir="target/classes" file="plugin.xml">
+		</copy>
+
+		<copy todir="target/classes/META-INF" file="src/META-INF/MANIFEST.MF">
+		</copy>
+
+		<replace file="target/classes/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
+	</target>
+</project>

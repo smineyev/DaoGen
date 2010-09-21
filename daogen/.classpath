@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="test"/>
+	<classpathentry including="**/*.java" kind="src" path="src"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/commands/3.3.0-I20070605-0010/commands-3.3.0-I20070605-0010.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/common/3.3.0-v20070426/common-3.3.0-v20070426.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/contenttype/3.2.100-v20070319/contenttype-3.2.100-v20070319.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/3.3.0-v_771/core-3.3.0-v_771.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/expressions/3.3.0-v20070606-0010/expressions-3.3.0-v20070606-0010.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/filesystem/1.1.0-v20070606/filesystem-1.1.0-v20070606.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/help/3.3.0-v20070524/help-3.3.0-v20070524.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/jface/3.3.0-I20070606-0010/jface-3.3.0-I20070606-0010.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/jobs/3.3.0-v20070423/jobs-3.3.0-v20070423.jar"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/osgi/3.3.0-v20070530/osgi-3.3.0-v20070530.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/preferences/3.2.100-v20070522/preferences-3.2.100-v20070522.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/equinox/registry/3.3.0-v20070522/registry-3.3.0-v20070522.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/resources/3.3.0-v20070604/resources-3.3.0-v20070604.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/core/runtime/3.3.100-v20070530/runtime-3.3.100-v20070530.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/text/3.3.0-v20070606-0010/text-3.3.0-v20070606-0010.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/ui/workbench/3.3.0-I20070608-1100/workbench-3.3.0-I20070608-1100.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/eclipse/swt/win32/win32/x86/3.3.0-v3346/x86-3.3.0-v3346.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dao"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dao-annotations"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
