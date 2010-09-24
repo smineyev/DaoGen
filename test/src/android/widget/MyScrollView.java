@@ -105,8 +105,9 @@ public class MyScrollView extends ScrollView {
 		}
 		
 		
-//		return onTouchEventImpl(ev, headerY <= scrollViewAbsoluteY);
-		return  headerY > scrollViewAbsoluteY ? super.onTouchEvent(ev) : onTouchEventImpl(ev, true);
+		boolean res = onTouchEventImpl(ev, headerY <= scrollViewAbsoluteY);
+		return res;
+//		return  headerY > scrollViewAbsoluteY ? super.onTouchEvent(ev) : onTouchEventImpl(ev, true);
 			
 //			myGridView2.scrollBy(0, 10);
 
@@ -114,7 +115,12 @@ public class MyScrollView extends ScrollView {
 	
 	
 	public boolean onTouchEventImpl(MotionEvent ev, boolean scrollGrid) {
-
+		// commented out since ot doesn't move grid at all 
+		if (scrollGrid) {
+			myGridView2.dispatchTouchEvent(ev);
+			return true;
+		}
+		
 		if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getEdgeFlags() != 0) {
 		    // Don't handle edge touches immediately -- they may actually belong to one of our
 		    // descendants.
@@ -164,7 +170,7 @@ public class MyScrollView extends ScrollView {
 		                if (scrollGrid) {
 Log.w("scrollGrid", "scrollGrid");
 //		                	myGridView2.scrollYByIfNeeded(deltaY);
-//							myGridView2.dispatchTouchEvent(ev);
+							myGridView2.dispatchTouchEvent(ev);
 		                } else  {
 Log.w("scroll", "scroll");
 		                	scrollBy(0, deltaY);
