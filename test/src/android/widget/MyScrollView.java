@@ -125,11 +125,22 @@ public class MyScrollView extends ScrollView {
 			scrollBy(0, headerY-scrollViewAbsoluteY);
 		}
 		
+		boolean isMotionDown = ev.getAction() == MotionEvent.ACTION_DOWN;
+		
+		if (isMotionDown) {
+			Log.d("action","motion down");
+		}
+		
 		boolean appAchoredToTheTop = headerY <= scrollViewAbsoluteY;
 		boolean isScrollingUp = isScrollingUp(ev);
 		boolean gridCanScrollUp = Test.firstView == null || Test.firstView.getTop() < 0;
 //		boolean gridCanScrollDown = Test.lastView != null && Test.lastView.getBottom() == 0;
 
+		if (isMotionDown && appAchoredToTheTop) {
+			super.onTouchEvent(ev);
+			return true;
+		}
+		
 		if (!isTouchSlopMotion(ev)) {
 			Log.e("motion state", (isScrollingUp ? "up" : "down") + " appAchoredToTheTop=" + appAchoredToTheTop+" gridCanScrollUp="+gridCanScrollUp);
 		}
@@ -141,8 +152,8 @@ public class MyScrollView extends ScrollView {
 					Log.e("motion state", "grid up");
 				}
 			} else {
-//				super.onTouchEvent(ev);
-				scrollBy(0, deltaY);
+				boolean r = super.onTouchEvent(ev);
+//				scrollBy(0, deltaY);
 				if (!isTouchSlopMotion(ev)) {
 					Log.e("motion state", "parent up");
 				}
@@ -154,8 +165,8 @@ public class MyScrollView extends ScrollView {
 					Log.e("motion state", "grid down");
 				}
 			} else {
-//				super.onTouchEvent(ev);
-				scrollBy(0, deltaY);
+				super.onTouchEvent(ev);
+//				scrollBy(0, deltaY);
 				if (!isTouchSlopMotion(ev)) {
 					Log.e("motion state", "parent down");
 				}
