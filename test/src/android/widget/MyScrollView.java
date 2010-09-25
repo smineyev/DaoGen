@@ -139,103 +139,106 @@ public class MyScrollView extends ScrollView {
 		if (scrollGrid) {
 			myGridView2.dispatchTouchEvent(ev); 
 			return true;
+		} else {
+			super.onTouchEvent(ev);
+			return true;
 		}
-		
-		if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getEdgeFlags() != 0) {
-		    // Don't handle edge touches immediately -- they may actually belong to one of our
-		    // descendants.
-		    return false;
-		}
-		
-		if (velocityTracker == null) {
-		    velocityTracker = VelocityTracker.obtain();
-		}
-		velocityTracker.addMovement(ev);
-		
-		final int action = ev.getAction();
-		
-		switch (action & MotionEvent.ACTION_MASK) {
-		    case MotionEvent.ACTION_DOWN: {
-		        final float y = ev.getY();
-		        if (!(isBeingDragged = inChild((int) ev.getX(), (int) y))) {
-		            return false;
-		        }
-		        
-		        /*
-		         * If being flinged and user touches, stop the fling. isFinished
-		         * will be false if being flinged.
-		         */
-		//	                if (!mScroller.isFinished()) {
-		//	                    mScroller.abortAnimation();
-		//	                }
-		
-		        // Remember where the motion event started
-		        lastMotionY = y;
-		        activePointerId = ev.getPointerId(0);
-		        break;
-		    }
-		    case MotionEvent.ACTION_MOVE:
-//		        if (mIsBeingDragged) {
-		            // Scroll to follow the motion event
-		    			activePointerId = ev.getPointerId(0);
-		                final int activePointerIndex = ev.findPointerIndex(activePointerId);
-		                final float y = ev.getY(activePointerIndex);
-		                final int deltaY = (int) (lastMotionY - y);
-		                lastMotionY = y;
-		
-		                if (Math.abs(deltaY) < touchSlop) {
-		                	break;
-		                }
-		                
-		                if (scrollGrid) {
-Log.w("scrollGrid", "scrollGrid");
-//		                	myGridView2.scrollYByIfNeeded(deltaY);
-							myGridView2.dispatchTouchEvent(ev);
-		                } else  {
-Log.w("scroll", "scroll");
-		                	scrollBy(0, deltaY);
-		                }	
-//		            }
-		            break;
-	        case MotionEvent.ACTION_UP: 
-	            if (isBeingDragged) {
-	                velocityTracker.computeCurrentVelocity(1000, maximumVelocity);
-	                int initialVelocity = (int) velocityTracker.getYVelocity(activePointerId);
-	
-	                if (getChildCount() > 0 && Math.abs(initialVelocity) > minimumVelocity) {
-Log.w("fling", "fling");	             
-						if (scrollGrid) {
-							myGridView2.dispatchTouchEvent(ev);
-						} else {
-							fling(-initialVelocity);
-						}
-	                }
-	
-	                activePointerId = INVALID_POINTER;
-	                isBeingDragged = false;
-	
-	                if (velocityTracker != null) {
-	                    velocityTracker.recycle();
-	                    velocityTracker = null;
-	                }
-	            }
-	            break;
-	        case MotionEvent.ACTION_CANCEL:
-	            if (isBeingDragged && getChildCount() > 0) {
-	                activePointerId = INVALID_POINTER;
-	                isBeingDragged = false;
-	                if (velocityTracker != null) {
-	                    velocityTracker.recycle();
-	                    velocityTracker = null;
-	                }
-	            }
-	            break;
-	        case MotionEvent.ACTION_POINTER_UP:
-Log.w("onSecondaryPointerUp", "onSecondaryPointerUp");	        	
-	            onSecondaryPointerUp(ev);
-	            break;
-	    }
-	    return true;
+//		
+//		if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getEdgeFlags() != 0) {
+//		    // Don't handle edge touches immediately -- they may actually belong to one of our
+//		    // descendants.
+//		    return false;
+//		}
+//		
+//		if (velocityTracker == null) {
+//		    velocityTracker = VelocityTracker.obtain();
+//		}
+//		velocityTracker.addMovement(ev);
+//		
+//		final int action = ev.getAction();
+//		
+//		switch (action & MotionEvent.ACTION_MASK) {
+//		    case MotionEvent.ACTION_DOWN: {
+//		        final float y = ev.getY();
+//		        if (!(isBeingDragged = inChild((int) ev.getX(), (int) y))) {
+//		            return false;
+//		        }
+//		        
+//		        /*
+//		         * If being flinged and user touches, stop the fling. isFinished
+//		         * will be false if being flinged.
+//		         */
+//		//	                if (!mScroller.isFinished()) {
+//		//	                    mScroller.abortAnimation();
+//		//	                }
+//		
+//		        // Remember where the motion event started
+//		        lastMotionY = y;
+//		        activePointerId = ev.getPointerId(0);
+//		        break;
+//		    }
+//		    case MotionEvent.ACTION_MOVE:
+////		        if (mIsBeingDragged) {
+//		            // Scroll to follow the motion event
+//		    			activePointerId = ev.getPointerId(0);
+//		                final int activePointerIndex = ev.findPointerIndex(activePointerId);
+//		                final float y = ev.getY(activePointerIndex);
+//		                final int deltaY = (int) (lastMotionY - y);
+//		                lastMotionY = y;
+//		
+//		                if (Math.abs(deltaY) < touchSlop) {
+//		                	break;
+//		                }
+//		                
+//		                if (scrollGrid) {
+//Log.w("scrollGrid", "scrollGrid");
+////		                	myGridView2.scrollYByIfNeeded(deltaY);
+//							myGridView2.dispatchTouchEvent(ev);
+//		                } else  {
+//Log.w("scroll", "scroll");
+//		                	scrollBy(0, deltaY);
+//		                }	
+////		            }
+//		            break;
+//	        case MotionEvent.ACTION_UP: 
+//	            if (isBeingDragged) {
+//	                velocityTracker.computeCurrentVelocity(1000, maximumVelocity);
+//	                int initialVelocity = (int) velocityTracker.getYVelocity(activePointerId);
+//	
+//	                if (getChildCount() > 0 && Math.abs(initialVelocity) > minimumVelocity) {
+//Log.w("fling", "fling");	             
+//						if (scrollGrid) {
+//							myGridView2.dispatchTouchEvent(ev);
+//						} else {
+//							fling(-initialVelocity);
+//						}
+//	                }
+//	
+//	                activePointerId = INVALID_POINTER;
+//	                isBeingDragged = false;
+//	
+//	                if (velocityTracker != null) {
+//	                    velocityTracker.recycle();
+//	                    velocityTracker = null;
+//	                }
+//	            }
+//	            break;
+//	        case MotionEvent.ACTION_CANCEL:
+//	            if (isBeingDragged && getChildCount() > 0) {
+//	                activePointerId = INVALID_POINTER;
+//	                isBeingDragged = false;
+//	                if (velocityTracker != null) {
+//	                    velocityTracker.recycle();
+//	                    velocityTracker = null;
+//	                }
+//	            }
+//	            break;
+//	        case MotionEvent.ACTION_POINTER_UP:
+//Log.w("onSecondaryPointerUp", "onSecondaryPointerUp");	        	
+//	            onSecondaryPointerUp(ev);
+//	            break;
+//	    }
+//	    return true;
 	}	
 		
 	private void onSecondaryPointerUp(MotionEvent ev) {
