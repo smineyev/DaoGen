@@ -1,44 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-	<LinearLayout 
-		android:orientation="vertical" 
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-        <!--  TextView
-              android:id="@+id/appsTxtView" 
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content" android:text="Favorites" / -->
-
-        <android.widget.MyGridView  
-                android:id="@+id/gridview1"
-                android:layout_width="fill_parent" 
-                android:layout_height="fill_parent"
-                android:numColumns="2"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-            android:scrollbars="none"/>
-		
-		<TextView
-		      android:id="@+id/appsTxtView" 
-		      android:layout_width="fill_parent"
-			  android:layout_height="wrap_content" android:text="Applications" />
+	<android.widget.MyScrollView
+	        android:id="@+id/scrollview"
+	        android:layout_width="fill_parent"
+	        android:layout_height="450dip">
+		<LinearLayout 
+			android:orientation="vertical" 
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+	
+	        <TextView
+	              android:id="@+id/categoryTxtView" 
+	              android:layout_width="fill_parent"
+	              android:layout_height="wrap_content" android:text="Favorites" />
+	
+	        <android.widget.MyGridView  
+	                android:id="@+id/gridview1"
+	                android:layout_width="fill_parent" 
+	                android:layout_height="fill_parent"
+	                android:numColumns="4"
+	                android:verticalSpacing="10dp"
+	                android:horizontalSpacing="10dp"
+	            android:scrollbars="none"/>
 			
-		<android.widget.MyGridView
-			    android:id="@+id/gridview2"
-			    android:layout_width="fill_parent" 
-			    android:layout_height="470dip"
-			    android:numColumns="2"
-			    android:verticalSpacing="10dp"
-			    android:horizontalSpacing="10dp"
-			android:scrollbars="none"/>
-			
-        <TextView android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:text="EOF" />
-			
+			<TextView
+			      android:id="@+id/appsTxtView" 
+			      android:layout_width="fill_parent"
+				  android:layout_height="wrap_content" android:text="Applications" />
+				
+			<android.widget.MyGridView
+				    android:id="@+id/gridview2"
+				    android:layout_width="fill_parent" 
+				    android:layout_height="470dip"
+				    android:numColumns="4"
+				    android:verticalSpacing="10dp"
+				    android:horizontalSpacing="10dp"
+				android:scrollbars="none"/>
+		</LinearLayout>
+	</android.widget.MyScrollView> 
+	<LinearLayout
+	        android:orientation="horizontal" 
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent">
+	        
+	        <Button android:text="PHONE"
+	           android:textSize="9sp"
+	           android:layout_weight="1"
+	           android:layout_width="fill_parent"
+	           android:layout_height="fill_parent"
+	           />
+	        <Button android:text="EMAIL"
+	           android:textSize="9sp"
+	           android:layout_weight="1"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               />
+	        <Button android:text="CONTACTS"
+	           android:textSize="9sp"
+	           android:layout_weight="1"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               />
+	        <Button android:text="WEB"
+	           android:textSize="9sp" 
+	           android:layout_weight="1"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               />
 	</LinearLayout>
-</android.widget.MyScrollView>
-
+</LinearLayout>

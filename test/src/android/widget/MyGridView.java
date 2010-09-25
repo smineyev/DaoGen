@@ -22,7 +22,6 @@ public class MyGridView extends GridView {
 
 	public MyGridView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		setBackgroundColor(Color.BLUE);
 	}
 
 	@Override
