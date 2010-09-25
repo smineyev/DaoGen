@@ -8,6 +8,11 @@
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 
+        <!--  TextView
+              android:id="@+id/appsTxtView" 
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:text="Favorites" / -->
+
         <android.widget.MyGridView  
                 android:id="@+id/gridview1"
                 android:layout_width="fill_parent" 
