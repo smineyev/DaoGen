@@ -7,8 +7,10 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.widget.AbsListView.OnScrollListener;
 
 import com.test.R;
+import com.test.Test;
 
 public class MyScrollView extends ScrollView {
 
@@ -78,6 +80,20 @@ public class MyScrollView extends ScrollView {
 		super.onFinishInflate();
 		
 		myGridView2 = (MyGridView) findViewById(R.id.gridview2);
+		myGridView2.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				Log.w("firstVisibleItem", ""+firstVisibleItem);
+			}
+		});
 	}
     
     
@@ -85,6 +101,10 @@ public class MyScrollView extends ScrollView {
 	public boolean onTouchEvent(MotionEvent ev) {
 //		myGridView2.scrollBy(0, 10);
 
+		if (Test.topView != null) {
+			Log.e("topView", ""+Test.topView.getTop() + " " +Test.topView.getVisibility());
+		}
+		
 		int[] p = new int[2];
 		this.getLocationInWindow(p);  
 		int scrollViewAbsoluteY = p[1];
@@ -117,7 +137,7 @@ public class MyScrollView extends ScrollView {
 	public boolean onTouchEventImpl(MotionEvent ev, boolean scrollGrid) {
 		// commented out since ot doesn't move grid at all 
 		if (scrollGrid) {
-			myGridView2.dispatchTouchEvent(ev);
+			myGridView2.dispatchTouchEvent(ev); 
 			return true;
 		}
 		

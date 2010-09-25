@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 public class Test extends Activity {
+	
+	public static View topView = null;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,16 +24,16 @@ public class Test extends Activity {
         scrollView.setFillViewport(true);
         
         GridView gridview1 = (GridView) findViewById(R.id.gridview1);
-        gridview1.setAdapter(new ImageAdapter(this));
+        gridview1.setAdapter(new ImageAdapter1(this));
         
         GridView gridview2 = (GridView) findViewById(R.id.gridview2);
-        gridview2.setAdapter(new ImageAdapter(this));
+        gridview2.setAdapter(new ImageAdapter2(this));
     }
     
-    public class ImageAdapter extends BaseAdapter {
+    public class ImageAdapter1 extends BaseAdapter {
         private Context mContext;
 
-        public ImageAdapter(Context c) {
+        public ImageAdapter1(Context c) {
             mContext = c;
         }
 
@@ -58,20 +61,71 @@ public class Test extends Activity {
                 imageView = (ImageView) convertView;
             }
 
+            if (position == 0) {
+            	
+            }
+            
             imageView.setImageResource(mThumbIds[position]);
             return imageView;
         }
 
-        // references to our images
-        private Integer[] mThumbIds = {
-                R.drawable.icon1, R.drawable.icon2,
-                R.drawable.icon3, R.drawable.icon4,
-                R.drawable.icon5, R.drawable.icon6,
-                R.drawable.icon7, R.drawable.icon8,
-                R.drawable.icon1, R.drawable.icon2,
-                R.drawable.icon3, R.drawable.icon4,
-                R.drawable.icon5, R.drawable.icon6,
-                R.drawable.icon7, R.drawable.icon8                
-        };
-    }    
+    }
+    
+    public class ImageAdapter2 extends BaseAdapter {
+    	private Context mContext;
+    	
+    	public ImageAdapter2(Context c) {
+    		mContext = c;
+    	}
+    	
+    	public int getCount() {
+    		return mThumbIds.length;
+    	}
+    	
+    	public Object getItem(int position) {
+    		return null;
+    	}
+    	
+    	public long getItemId(int position) {
+    		return 0;
+    	}
+    	
+    	// create a new ImageView for each item referenced by the Adapter
+    	public View getView(int position, View convertView, ViewGroup parent) {
+    		ImageView imageView;
+    		if (convertView == null) {  // if it's not recycled, initialize some attributes
+    			imageView = new ImageView(mContext);
+    			imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+    			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    			imageView.setPadding(8, 8, 8, 8);
+    		} else {
+    			imageView = (ImageView) convertView;
+    		}
+    		
+    		if (position == 0) {
+    			topView = imageView;
+    		} else {
+    			if (topView == convertView) {
+    				topView = null;
+    			}
+    		}
+    		
+    		imageView.setImageResource(mThumbIds[position]);
+    		return imageView;
+    	}
+    	
+    }
+    
+    // references to our images
+    private Integer[] mThumbIds = {
+            R.drawable.icon1, R.drawable.icon2,
+            R.drawable.icon3, R.drawable.icon4,
+            R.drawable.icon5, R.drawable.icon6,
+            R.drawable.icon7, R.drawable.icon8,
+            R.drawable.icon1, R.drawable.icon2,
+            R.drawable.icon3, R.drawable.icon4,
+            R.drawable.icon5, R.drawable.icon6,
+            R.drawable.icon7, R.drawable.icon8                
+    };
+    
 }
