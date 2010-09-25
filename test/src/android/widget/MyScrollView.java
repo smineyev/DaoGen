@@ -7,8 +7,6 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.widget.AbsListView.OnScrollListener;
 
 import com.test.R;
 import com.test.Test;
@@ -50,7 +48,9 @@ public class MyScrollView extends ScrollView {
     /**
      * Determines speed during touch scrolling
      */
-    private VelocityTracker velocityTracker;	
+    private VelocityTracker velocityTracker;
+
+	private int deltaY;	
 
 	public MyScrollView(Context context) {
 		this(context, null, 0);
@@ -81,43 +81,40 @@ public class MyScrollView extends ScrollView {
 		super.onFinishInflate();
 		
 		myGridView2 = (MyGridView) findViewById(R.id.gridview2);
-		myGridView2.setOnScrollListener(new OnScrollListener() {
-			
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
-				Log.w("firstVisibleItem", ""+firstVisibleItem);
-			}
-		});
+//		myGridView2.setOnScrollListener(new OnScrollListener() {
+//			
+//			@Override
+//			public void onScrollStateChanged(AbsListView view, int scrollState) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onScroll(AbsListView view, int firstVisibleItem,
+//					int visibleItemCount, int totalItemCount) {
+//				Log.w("firstVisibleItem", ""+firstVisibleItem);
+//			}
+//		});
 	}
     
     
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
-//		myGridView2.scrollBy(0, 10);
-
-		if (Test.firstView != null) {
-			Log.e("topView", ""+Test.firstView.getTop());
-		}
-		if (Test.lastView != null) {
-			Log.e("lastView", ""+Test.lastView.getBottom() + " " +Test.firstView.getVisibility());
-		}
+		calculateYDelta(ev);
 		
 		int[] p = new int[2];
+		
+		if (Test.firstView != null) {
+			Log.w("topView", ""+Test.firstView.getTop());
+		}
+		if (Test.lastView != null) {
+			Log.w("lastView", ""+Test.lastView.getBottom() + " "+myGridView2.getHeight());
+		}
+		
 		this.getLocationInWindow(p);  
 		int scrollViewAbsoluteY = p[1];
 
 		View appTextView = findViewById(R.id.appsTxtView);
-
-		
-		
-		p = new int[2];
 		appTextView.getLocationInWindow(p);  
 		int headerY = p[1];  
 		
@@ -128,13 +125,61 @@ public class MyScrollView extends ScrollView {
 			scrollBy(0, headerY-scrollViewAbsoluteY);
 		}
 		
-		
-		boolean res = onTouchEventImpl(ev, headerY <= scrollViewAbsoluteY);
-		return res;
-//		return  headerY > scrollViewAbsoluteY ? super.onTouchEvent(ev) : onTouchEventImpl(ev, true);
-			
-//			myGridView2.scrollBy(0, 10);
+		boolean appAchoredToTheTop = headerY <= scrollViewAbsoluteY;
+		boolean isScrollingUp = isScrollingUp(ev);
+		boolean gridCanScrollUp = Test.firstView == null || Test.firstView.getTop() < 0;
+//		boolean gridCanScrollDown = Test.lastView != null && Test.lastView.getBottom() == 0;
 
+		if (!isTouchSlopMotion(ev)) {
+			Log.e("motion state", (isScrollingUp ? "up" : "down") + " appAchoredToTheTop=" + appAchoredToTheTop+" gridCanScrollUp="+gridCanScrollUp);
+		}
+		
+		if (isScrollingUp) {
+			if (gridCanScrollUp) {
+				myGridView2.dispatchTouchEvent(ev);
+				if (!isTouchSlopMotion(ev)) {
+					Log.e("motion state", "grid up");
+				}
+			} else {
+//				super.onTouchEvent(ev);
+				scrollBy(0, deltaY);
+				if (!isTouchSlopMotion(ev)) {
+					Log.e("motion state", "parent up");
+				}
+			}
+		} else {			
+			if (appAchoredToTheTop) {
+				myGridView2.dispatchTouchEvent(ev);
+				if (!isTouchSlopMotion(ev)) {
+					Log.e("motion state", "grid down");
+				}
+			} else {
+//				super.onTouchEvent(ev);
+				scrollBy(0, deltaY);
+				if (!isTouchSlopMotion(ev)) {
+					Log.e("motion state", "parent down");
+				}
+			}
+		}
+		return true;
+		
+
+	}
+
+	private void calculateYDelta(MotionEvent ev) {
+		activePointerId = ev.getPointerId(0);
+        final int activePointerIndex = ev.findPointerIndex(activePointerId);
+        final float y = ev.getY(activePointerIndex);
+        deltaY = (int) (lastMotionY - y);
+        lastMotionY = y;
+	}
+	
+	private boolean isTouchSlopMotion(MotionEvent ev) {
+		return Math.abs(deltaY) < touchSlop;
+	}
+	
+	private boolean isScrollingUp(MotionEvent ev) {
+        return deltaY < 0;
 	}
 	
 	
@@ -246,34 +291,34 @@ public class MyScrollView extends ScrollView {
 //	    return true;
 	}	
 		
-	private void onSecondaryPointerUp(MotionEvent ev) {
-	    final int pointerIndex = (ev.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >>
-	            MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-	    final int pointerId = ev.getPointerId(pointerIndex);
-	    if (pointerId == activePointerId) {
-	        // This was our active pointer going up. Choose a new
-	    // active pointer and adjust accordingly.
-	    // TODO: Make this decision more intelligent.
-	        final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-	        lastMotionY = ev.getY(newPointerIndex);
-	        activePointerId = ev.getPointerId(newPointerIndex);
-	        if (velocityTracker != null) {
-	            velocityTracker.clear();
-	        }
-	    }
-	}
-
-
-    private boolean inChild(int x, int y) {
-        if (getChildCount() > 0) {
-            final int scrollY = getScrollY();
-            final View child = getChildAt(0);
-            return !(y < child.getTop() - scrollY
-                    || y >= child.getBottom() - scrollY
-                    || x < child.getLeft()
-                    || x >= child.getRight());
-        }
-        return false;
-    }
+//	private void onSecondaryPointerUp(MotionEvent ev) {
+//	    final int pointerIndex = (ev.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >>
+//	            MotionEvent.ACTION_POINTER_INDEX_SHIFT;
+//	    final int pointerId = ev.getPointerId(pointerIndex);
+//	    if (pointerId == activePointerId) {
+//	        // This was our active pointer going up. Choose a new
+//	    // active pointer and adjust accordingly.
+//	    // TODO: Make this decision more intelligent.
+//	        final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
+//	        lastMotionY = ev.getY(newPointerIndex);
+//	        activePointerId = ev.getPointerId(newPointerIndex);
+//	        if (velocityTracker != null) {
+//	            velocityTracker.clear();
+//	        }
+//	    }
+//	}
+//
+//
+//    private boolean inChild(int x, int y) {
+//        if (getChildCount() > 0) {
+//            final int scrollY = getScrollY();
+//            final View child = getChildAt(0);
+//            return !(y < child.getTop() - scrollY
+//                    || y >= child.getBottom() - scrollY
+//                    || x < child.getLeft()
+//                    || x >= child.getRight());
+//        }
+//        return false;
+//    }
 
 }

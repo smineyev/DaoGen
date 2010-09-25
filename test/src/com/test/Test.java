@@ -39,7 +39,7 @@ public class Test extends Activity {
         }
 
         public int getCount() {
-            return mThumbIds.length;
+            return mThumbIds1.length;
         }
 
         public Object getItem(int position) {
@@ -62,7 +62,7 @@ public class Test extends Activity {
                 imageView = (ImageView) convertView;
             }
 
-            imageView.setImageResource(mThumbIds[position]);
+            imageView.setImageResource(mThumbIds1[position]);
             return imageView;
         }
 
@@ -76,7 +76,7 @@ public class Test extends Activity {
     	}
     	
     	public int getCount() {
-    		return mThumbIds.length;
+    		return mThumbIds2.length;
     	}
     	
     	public Object getItem(int position) {
@@ -114,22 +114,29 @@ public class Test extends Activity {
     			}
     		} 
     		
-    		imageView.setImageResource(mThumbIds[position]);
+    		imageView.setImageResource(mThumbIds2[position]);
     		return imageView;
     	}
     	
     }
     
     // references to our images
-    private Integer[] mThumbIds = {
+    private Integer[] mThumbIds1 = {
             R.drawable.icon1, R.drawable.icon2,
             R.drawable.icon3, R.drawable.icon4,
-            R.drawable.icon5, R.drawable.icon6,
-            R.drawable.icon7, R.drawable.icon8,
-            R.drawable.icon1, R.drawable.icon2,
-            R.drawable.icon3, R.drawable.icon4,
-            R.drawable.icon5, R.drawable.icon6,
-            R.drawable.icon7, R.drawable.icon8                
+            R.drawable.icon5, R.drawable.icon6                
+    };
+    
+    // references to our images
+    private Integer[] mThumbIds2 = {
+    		R.drawable.icon1, R.drawable.icon2,
+    		R.drawable.icon3, R.drawable.icon4,
+    		R.drawable.icon5, R.drawable.icon6,
+    		R.drawable.icon7, R.drawable.icon8,
+    		R.drawable.icon1, R.drawable.icon2,
+    		R.drawable.icon3, R.drawable.icon4,
+    		R.drawable.icon5, R.drawable.icon6,
+    		R.drawable.icon7, R.drawable.icon8                
     };
     
 }
