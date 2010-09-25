@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
 
 import com.test.R;
@@ -101,8 +102,11 @@ public class MyScrollView extends ScrollView {
 	public boolean onTouchEvent(MotionEvent ev) {
 //		myGridView2.scrollBy(0, 10);
 
-		if (Test.topView != null) {
-			Log.e("topView", ""+Test.topView.getTop() + " " +Test.topView.getVisibility());
+		if (Test.firstView != null) {
+			Log.e("topView", ""+Test.firstView.getTop());
+		}
+		if (Test.lastView != null) {
+			Log.e("lastView", ""+Test.lastView.getBottom() + " " +Test.firstView.getVisibility());
 		}
 		
 		int[] p = new int[2];
@@ -137,6 +141,7 @@ public class MyScrollView extends ScrollView {
 	public boolean onTouchEventImpl(MotionEvent ev, boolean scrollGrid) {
 		// commented out since ot doesn't move grid at all 
 		if (scrollGrid) {
+			
 			myGridView2.dispatchTouchEvent(ev); 
 			return true;
 		} else {

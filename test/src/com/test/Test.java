@@ -12,7 +12,8 @@ import android.widget.ScrollView;
 
 public class Test extends Activity {
 	
-	public static View topView = null;
+	public static View firstView = null;
+	public static View lastView = null;
 	
     /** Called when the activity is first created. */
     @Override
@@ -61,10 +62,6 @@ public class Test extends Activity {
                 imageView = (ImageView) convertView;
             }
 
-            if (position == 0) {
-            	
-            }
-            
             imageView.setImageResource(mThumbIds[position]);
             return imageView;
         }
@@ -103,12 +100,19 @@ public class Test extends Activity {
     		}
     		
     		if (position == 0) {
-    			topView = imageView;
+    			firstView = imageView;
     		} else {
-    			if (topView == convertView) {
-    				topView = null;
+    			if (position == getCount() - 1) {
+    				lastView = imageView;
+    			} else {
+	    			if (firstView == convertView) {
+	    				firstView = null;
+	    			} else if (lastView == convertView) {
+	    				lastView = null;
+	    			}
+
     			}
-    		}
+    		} 
     		
     		imageView.setImageResource(mThumbIds[position]);
     		return imageView;
