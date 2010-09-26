@@ -1,75 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:orientation="vertical" 
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 
-	<android.widget.MyScrollView
-	        android:id="@+id/scrollview"
-	        android:layout_width="fill_parent"
-	        android:layout_height="450dip">
-		<LinearLayout 
-			android:orientation="vertical" 
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent">
-	
-	        <TextView
-	              android:id="@+id/categoryTxtView" 
-	              android:layout_width="fill_parent"
-	              android:layout_height="wrap_content" android:text="Favorites" />
-	
-	        <android.widget.MyGridView  
-	                android:id="@+id/gridview1"
-	                android:layout_width="fill_parent" 
-	                android:layout_height="fill_parent"
-	                android:numColumns="4"
-	                android:verticalSpacing="10dp"
-	                android:horizontalSpacing="10dp"
-	            android:scrollbars="none"/>
-			
-			<TextView
-			      android:id="@+id/appsTxtView" 
-			      android:layout_width="fill_parent"
-				  android:layout_height="wrap_content" android:text="Applications" />
-				
-			<android.widget.MyGridView
-				    android:id="@+id/gridview2"
-				    android:layout_width="fill_parent" 
-				    android:layout_height="470dip"
-				    android:numColumns="4"
-				    android:verticalSpacing="10dp"
-				    android:horizontalSpacing="10dp"
-				android:scrollbars="none"/>
+	<android.widget.MyScrollView android:id="@+id/scrollview"
+		android:layout_width="fill_parent" android:layout_height="450dip"
+		android:scrollbarThumbVertical="@drawable/scrollbar_vertical"
+		android:background="@drawable/background_launcher">
+		<LinearLayout android:orientation="vertical"
+			android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+
+
+			<FrameLayout android:id="@+id/FrameLayout01"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:id="@+id/categoryTxtView"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:text="Favorites" android:background="@drawable/background_header_category"
+					android:gravity="bottom|left" android:textSize="@dimen/header_text_size"
+					android:textColor="@color/HeaderText" />
+
+
+				<LinearLayout android:id="@+id/ButtonContainer"
+					android:layout_width="@dimen/header_cat_right_button_container_size" android:layout_gravity="right|center_vertical"
+					android:layout_height="fill_parent" android:orientation="horizontal"
+					android:gravity="center">
+					<ImageButton android:id="@+id/ImageButton01"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:background="@drawable/button_pointer_down"
+						android:layout_weight="0"></ImageButton>
+				</LinearLayout>
+			</FrameLayout>
+
+
+			<android.widget.MyGridView android:id="@+id/gridview1"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:numColumns="4" android:verticalSpacing="10dp"
+				android:horizontalSpacing="10dp" android:scrollbars="none" />
+
+			<TextView android:id="@+id/appsTxtView"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="Applications" android:background="@drawable/background_header_apps"
+				android:gravity="bottom|left" android:textSize="@dimen/header_text_size"
+				android:textColor="@color/HeaderText" />
+
+			<android.widget.MyGridView android:id="@+id/gridview2"
+				android:layout_width="fill_parent" android:layout_height="470dip"
+				android:numColumns="4" android:verticalSpacing="10dp"
+				android:horizontalSpacing="10dp" android:scrollbars="none" />
 		</LinearLayout>
-	</android.widget.MyScrollView> 
-	<LinearLayout
-	        android:orientation="horizontal" 
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent">
-	        
-	        <Button android:text="PHONE"
-	           android:textSize="9sp"
-	           android:layout_weight="1"
-	           android:layout_width="fill_parent"
-	           android:layout_height="fill_parent"
-	           />
-	        <Button android:text="EMAIL"
-	           android:textSize="9sp"
-	           android:layout_weight="1"
-               android:layout_width="fill_parent"
-               android:layout_height="fill_parent"
-               />
-	        <Button android:text="CONTACTS"
-	           android:textSize="9sp"
-	           android:layout_weight="1"
-               android:layout_width="fill_parent"
-               android:layout_height="fill_parent"
-               />
-	        <Button android:text="WEB"
-	           android:textSize="9sp" 
-	           android:layout_weight="1"
-               android:layout_width="fill_parent"
-               android:layout_height="fill_parent"
-               />
+	</android.widget.MyScrollView>
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+		<Button android:text="PHONE" android:layout_weight="1" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
+		<Button android:text="EMAIL" android:layout_weight="1" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
+		<Button android:text="CONTACTS" android:layout_weight="1" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
+		<Button android:text="WEB" android:layout_weight="1" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
 	</LinearLayout>
 </LinearLayout>

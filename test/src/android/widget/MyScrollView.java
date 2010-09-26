@@ -1,6 +1,7 @@
 package android.widget;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -73,6 +74,8 @@ public class MyScrollView extends ScrollView {
         touchSlop = configuration.getScaledTouchSlop();
         minimumVelocity = configuration.getScaledMinimumFlingVelocity();
         maximumVelocity = configuration.getScaledMaximumFlingVelocity();
+        
+
     }
 	
 	
@@ -81,6 +84,12 @@ public class MyScrollView extends ScrollView {
 		super.onFinishInflate();
 		
 		myGridView2 = (MyGridView) findViewById(R.id.gridview2);
+		
+        TextView tvCategory = (TextView) findViewById(R.id.categoryTxtView);
+        Typeface digitalFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/titillium15l.ttf");
+        tvCategory.setTypeface(digitalFont);
+        TextView tvApps = (TextView) findViewById(R.id.appsTxtView);
+        tvApps.setTypeface(digitalFont);        
 //		myGridView2.setOnScrollListener(new OnScrollListener() {
 //			
 //			@Override

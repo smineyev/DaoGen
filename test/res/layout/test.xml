@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+
+	<FrameLayout android:id="@+id/FrameLayout01"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<TextView android:id="@+id/categoryTxtView"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="Favorites" android:background="@drawable/background_header_category"
+			android:gravity="bottom|left" android:textSize="24sp"
+			android:textColor="@color/HeaderText"></TextView>
+		
+		
+	<LinearLayout android:id="@+id/ButtonContainer" android:layout_width="130px" android:layout_gravity="right|center_vertical" android:layout_height="fill_parent" android:orientation="horizontal" android:gravity="center">
+			<ImageButton android:id="@+id/ImageButton01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/button_pointer_down" android:layout_weight="0"></ImageButton>
+		</LinearLayout></FrameLayout>
+
+
+</LinearLayout>

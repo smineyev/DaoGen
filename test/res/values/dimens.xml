@@ -1,0 +1,5 @@
+<resources>
+	<dimen name="header_cat_right_button_container_size">120dip</dimen>
+	<dimen name="header_text_size">24sp</dimen>
+	<dimen name="dock_button_text_size">12sp</dimen>
+</resources>
