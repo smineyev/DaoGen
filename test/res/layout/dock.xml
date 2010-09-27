@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:layout_height="@dimen/dock_height" android:layout_gravity="bottom"
+	android:background="@drawable/bg_dock" android:paddingLeft="@dimen/dock_padding_left"
+	android:paddingRight="@dimen/dock_padding_right" android:paddingTop="@dimen/dock_padding_top"
+	android:paddingBottom="@dimen/dock_padding_bottom">
+
+	<android.widget.DockButton android:text="PHONE"
+		android:layout_weight="1" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:background="@drawable/button_dock"
+		android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"
+		android:layout_marginLeft="@dimen/dock_button_margin_left"
+		android:layout_marginRight="@dimen/dock_button_margin_right"
+		 />
+	<Button android:text="EMAIL" android:layout_weight="1"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textSize="@dimen/dock_button_text_size"
+		android:layout_marginLeft="@dimen/dock_button_margin_left"
+		android:layout_marginRight="@dimen/dock_button_margin_right" />
+	<Button android:text="CONTACTS" android:layout_weight="1"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textSize="@dimen/dock_button_text_size"
+		android:layout_marginLeft="@dimen/dock_button_margin_left"
+		android:layout_marginRight="@dimen/dock_button_margin_right" />
+	<Button android:text="WEB" android:layout_weight="1"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textSize="@dimen/dock_button_text_size"
+		android:layout_marginLeft="@dimen/dock_button_margin_left"
+		android:layout_marginRight="@dimen/dock_button_margin_right" />
+</LinearLayout>
