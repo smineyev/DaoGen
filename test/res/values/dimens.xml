@@ -1,5 +1,16 @@
 <resources>
 	<dimen name="header_cat_right_button_container_size">120dip</dimen>
 	<dimen name="header_text_size">24sp</dimen>
+	
+	
+	<!-- dock -->
+	<dimen name="dock_height">79px</dimen>
+	<dimen name="dock_padding_left">20px</dimen>
+	<dimen name="dock_padding_right">21px</dimen>
+	<dimen name="dock_padding_top">6px</dimen>
+	<dimen name="dock_padding_bottom">12px</dimen>	
+	<dimen name="dock_button_margin_left">5px</dimen>
+	<dimen name="dock_button_margin_right">6px</dimen>
+	
 	<dimen name="dock_button_text_size">12sp</dimen>
 </resources>

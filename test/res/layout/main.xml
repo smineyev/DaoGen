@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
 	<android.widget.MyScrollView android:id="@+id/scrollview"
-		android:layout_width="fill_parent" android:layout_height="450dip"
+		android:layout_width="fill_parent" android:layout_height="400dip"
 		android:scrollbarThumbVertical="@drawable/scrollbar_vertical"
 		android:background="@drawable/background_launcher">
 		<LinearLayout android:orientation="vertical"
@@ -16,7 +16,7 @@
 				android:layout_width="fill_parent" android:layout_height="wrap_content">
 				<TextView android:id="@+id/categoryTxtView"
 					android:layout_width="fill_parent" android:layout_height="wrap_content"
-					android:text="Favorites" android:background="@drawable/background_header_category"
+					android:text="Favorites" android:background="@drawable/bg_header_category"
 					android:gravity="bottom|left" android:textSize="@dimen/header_text_size"
 					android:textColor="@color/HeaderText" />
 
@@ -36,30 +36,26 @@
 			<android.widget.MyGridView android:id="@+id/gridview1"
 				android:layout_width="fill_parent" android:layout_height="fill_parent"
 				android:numColumns="4" android:verticalSpacing="10dp"
-				android:horizontalSpacing="10dp" android:scrollbars="none" />
+				android:horizontalSpacing="10dp" android:scrollbars="none"
+				android:paddingLeft="20dip" 
+				android:paddingRight="20dip"/>
 
 			<TextView android:id="@+id/appsTxtView"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
-				android:text="Applications" android:background="@drawable/background_header_apps"
+				android:text="Applications" android:background="@drawable/bg_header_apps"
 				android:gravity="bottom|left" android:textSize="@dimen/header_text_size"
 				android:textColor="@color/HeaderText" />
 
 			<android.widget.MyGridView android:id="@+id/gridview2"
 				android:layout_width="fill_parent" android:layout_height="470dip"
 				android:numColumns="4" android:verticalSpacing="10dp"
-				android:horizontalSpacing="10dp" android:scrollbars="none" />
+				android:horizontalSpacing="10dp" android:scrollbars="none" 
+				android:paddingLeft="20dip" 
+				android:paddingRight="20dip"/>
 		</LinearLayout>
 	</android.widget.MyScrollView>
-	<LinearLayout android:orientation="horizontal"
-		android:layout_width="fill_parent" android:layout_height="fill_parent">
-
-		<Button android:text="PHONE" android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
-		<Button android:text="EMAIL" android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
-		<Button android:text="CONTACTS" android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
-		<Button android:text="WEB" android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:background="@drawable/button_dock" android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"/>
-	</LinearLayout>
-</LinearLayout>
+	
+	<include layout="@layout/dock" android:id="@+id/dock"/>
+	
+	
+</FrameLayout>
