@@ -7,28 +7,30 @@
 	android:paddingBottom="@dimen/dock_padding_bottom">
 
 	<android.widget.DockButton android:text="PHONE"
-		android:layout_weight="1" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:background="@drawable/button_dock"
-		android:textColor="@color/HeaderText" android:textSize="@dimen/dock_button_text_size"
+		android:layout_weight="1" 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:textColor="@color/HeaderText" 
+		android:textSize="@dimen/dock_button_text_size"
 		android:layout_marginLeft="@dimen/dock_button_margin_left"
 		android:layout_marginRight="@dimen/dock_button_margin_right"
-		 />
-	<Button android:text="EMAIL" android:layout_weight="1"
+		/>
+	<android.widget.DockButton android:text="EMAIL" android:layout_weight="1"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textColor="@color/HeaderText"
 		android:textSize="@dimen/dock_button_text_size"
 		android:layout_marginLeft="@dimen/dock_button_margin_left"
-		android:layout_marginRight="@dimen/dock_button_margin_right" />
-	<Button android:text="CONTACTS" android:layout_weight="1"
+		android:layout_marginRight="@dimen/dock_button_margin_right" android:width="99px" android:height="61px"/>
+	<android.widget.DockButton android:text="CONTACTS" android:layout_weight="1"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textColor="@color/HeaderText"
 		android:textSize="@dimen/dock_button_text_size"
 		android:layout_marginLeft="@dimen/dock_button_margin_left"
-		android:layout_marginRight="@dimen/dock_button_margin_right" />
-	<Button android:text="WEB" android:layout_weight="1"
+		android:layout_marginRight="@dimen/dock_button_margin_right" android:width="99px" android:height="61px"/>
+	<android.widget.DockButton android:text="WEB" android:layout_weight="1"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:background="@drawable/button_dock" android:textColor="@color/HeaderText"
+		android:textColor="@color/HeaderText"
 		android:textSize="@dimen/dock_button_text_size"
 		android:layout_marginLeft="@dimen/dock_button_margin_left"
-		android:layout_marginRight="@dimen/dock_button_margin_right" />
+		android:layout_marginRight="@dimen/dock_button_margin_right" android:width="99px" android:height="61px"/>
 </LinearLayout>

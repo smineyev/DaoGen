@@ -2,7 +2,9 @@
 	<dimen name="header_cat_right_button_container_size">120dip</dimen>
 	<dimen name="header_text_size">24sp</dimen>
 	
-	
+	<!-- app scroll view and grids -->
+	<dimen name="scrollview_bottom_offset">67px</dimen>
+	<dimen name="scrollview_shadow_bottom_offset">57px</dimen>
 	<!-- dock -->
 	<dimen name="dock_height">79px</dimen>
 	<dimen name="dock_padding_left">20px</dimen>
@@ -11,6 +13,7 @@
 	<dimen name="dock_padding_bottom">12px</dimen>	
 	<dimen name="dock_button_margin_left">5px</dimen>
 	<dimen name="dock_button_margin_right">6px</dimen>
-	
+	<dimen name="dock_button_width">61px</dimen>
+	<dimen name="dock_button_height">61px</dimen>
 	<dimen name="dock_button_text_size">12sp</dimen>
 </resources>

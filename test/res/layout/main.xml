@@ -4,16 +4,19 @@
 	android:layout_height="fill_parent">
 
 	<android.widget.MyScrollView android:id="@+id/scrollview"
-		android:layout_width="fill_parent" android:layout_height="400dip"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:scrollbarThumbVertical="@drawable/scrollbar_vertical"
-		android:background="@drawable/background_launcher">
+		android:background="@drawable/background_launcher" 
+		android:layout_marginBottom="@dimen/scrollview_bottom_offset">
 		<LinearLayout android:orientation="vertical"
 			android:layout_width="fill_parent" android:layout_height="fill_parent">
 
 
 
 			<FrameLayout android:id="@+id/FrameLayout01"
-				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				>
 				<TextView android:id="@+id/categoryTxtView"
 					android:layout_width="fill_parent" android:layout_height="wrap_content"
 					android:text="Favorites" android:background="@drawable/bg_header_category"
@@ -34,28 +37,41 @@
 
 
 			<android.widget.MyGridView android:id="@+id/gridview1"
-				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:numColumns="4" android:verticalSpacing="10dp"
 				android:horizontalSpacing="10dp" android:scrollbars="none"
 				android:paddingLeft="20dip" 
-				android:paddingRight="20dip"/>
+				android:paddingRight="20dip"
+				/>
 
 			<TextView android:id="@+id/appsTxtView"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:text="Applications" android:background="@drawable/bg_header_apps"
 				android:gravity="bottom|left" android:textSize="@dimen/header_text_size"
-				android:textColor="@color/HeaderText" />
+				android:textColor="@color/HeaderText"
+				/>
 
 			<android.widget.MyGridView android:id="@+id/gridview2"
-				android:layout_width="fill_parent" android:layout_height="470dip"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
 				android:numColumns="4" android:verticalSpacing="10dp"
 				android:horizontalSpacing="10dp" android:scrollbars="none" 
 				android:paddingLeft="20dip" 
-				android:paddingRight="20dip"/>
+				android:paddingRight="20dip"
+				android:layout_weight="0"/>
 		</LinearLayout>
 	</android.widget.MyScrollView>
 	
-	<include layout="@layout/dock" android:id="@+id/dock"/>
+	<ImageView android:id="@+id/iv_shadow_scrollview_bottom" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_gravity="bottom" 
+		android:src="@drawable/shw_scrollview_bottom"
+		android:layout_marginBottom="@dimen/scrollview_shadow_bottom_offset"></ImageView>
 	
 	
+	<include layout="@layout/dock" android:id="@+id/dock"/> 
+	
+	
+
+
 </FrameLayout>
