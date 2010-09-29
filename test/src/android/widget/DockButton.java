@@ -7,10 +7,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.Paint.Align;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,18 +28,24 @@ public class DockButton extends Button
 	public static final String TAG = DockButton.class.getSimpleName();
 	
 	
+	protected NinePatchDrawable	badgeBack;
+	
+	protected Paint badgePaint = new Paint();
+	protected Rect sourceBadgeRect = new Rect();
+	protected Rect scaleBadgeRect = new Rect();
 	protected Bitmap back;
-	
 	protected Paint paint = new Paint();
-
-	
 	protected Rect sourceRect = new Rect();
 	protected Rect originalRect = new Rect();
+	protected Rect parentRect = new Rect();
 	protected Rect scaleRect = new Rect();
-	
-	
 	protected boolean downState = false;
 
+	
+	protected int		badgeValue = 9;
+	protected String	badgeValueAsString = "9";
+	protected boolean	badgeVisibility = true;
+	
 	public DockButton(Context context)
 	{
 		super(context);
@@ -68,7 +78,18 @@ public class DockButton extends Button
 		back = BitmapFactory.decodeResource(getResources(),R.drawable.btn_dock_pressed);
 		sourceRect.set(0,0, back.getWidth(), back.getHeight());
 		
+		badgeBack = (NinePatchDrawable) getResources().getDrawable(R.drawable.bg_badge_dock_button);
+		sourceBadgeRect.set(0,0, badgeBack.getIntrinsicWidth(), badgeBack.getIntrinsicHeight());
 		setBackgroundResource(R.color.Transparent);
+		
+		badgePaint.setColor(Color.BLACK);
+		//badgePaint.setAntiAlias(true);
+
+		badgePaint.setTextAlign(Align.CENTER);
+		badgePaint.setTextSize(12.0f);
+		badgePaint.setStyle(Paint.Style.FILL);
+		badgePaint.setTypeface(Typeface.DEFAULT_BOLD);
+
 
 
 	}
@@ -79,6 +100,7 @@ public class DockButton extends Button
 		// TODO Auto-generated method stub
 		super.onLayout(changed, left, top, right, bottom);
 		
+		parentRect.set(left, top, right, bottom);
 		originalRect.set(0,0,getWidth(), getHeight());
 
 		
@@ -108,6 +130,7 @@ public class DockButton extends Button
 	@Override
 	protected void onDraw(Canvas canvas)
 	{
+		
 		if (scale > 0.0f)
 		{
 			int offset = (int)(originalRect.height()*scale/2);
@@ -120,6 +143,23 @@ public class DockButton extends Button
 				sourceRect, originalRect, paint);			
 		}
 		super.onDraw(canvas);
+		
+		if (hasBadge())
+		{
+
+			int textWidth = (int)badgePaint.measureText(badgeValueAsString);
+			// semi-transparent part = 8, design offset = 5
+			int badgeWidth = 8+8+5+5+textWidth;
+			int offset = originalRect.width()/2-badgeWidth/2;
+			scaleBadgeRect.set(originalRect.width()/2-badgeWidth/2, 0, 
+								originalRect.width()/2+badgeWidth/2,sourceBadgeRect.height());
+			badgeBack.setBounds(scaleBadgeRect);
+			badgeBack.draw(canvas);
+			//canvas.drawRect(r, badgePaint)
+			canvas.drawText(badgeValueAsString, originalRect.width()/2, badgePaint.getTextSize()+7, badgePaint);
+			//canvas.drawLine(0,0, 20, 20, badgePaint);
+			//canvas.drawRect(scaleBadgeRect, badgePaint);
+		}
 	}
 	
 	public void startExpandingAnimation() {
@@ -127,6 +167,28 @@ public class DockButton extends Button
 			aniThread = new AnimationThread(0,200,.1f,1.0f, new AccelerateInterpolator());
 			aniThread.start();
 		}
+	}
+	
+	
+	public void setBadge(int value)
+	{
+		badgeValue = value;
+		badgeValueAsString = Integer.toString(badgeValue);
+	}
+	
+	public boolean hasBadge()
+	{
+		return badgeValue >=0;
+	}
+	
+	public boolean isBadgeVisible()
+	{
+		return badgeVisibility;
+	}
+	
+	public void setBadgeVisiblity(boolean value)
+	{
+		badgeVisibility = value;
 	}
 	
 	float scale = 0.0f;
