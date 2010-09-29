@@ -20,7 +20,7 @@ public class MyScrollView extends ScrollView {
      */
     private static final int INVALID_POINTER = -1;
 	
-	private MyGridView myGridView2;
+	private GridView myGridView2;
 
 	
     private int touchSlop;
@@ -83,7 +83,7 @@ public class MyScrollView extends ScrollView {
 	protected void onFinishInflate() {
 		super.onFinishInflate();
 		
-		myGridView2 = (MyGridView) findViewById(R.id.gridview2);
+		myGridView2 = (GridView) findViewById(R.id.gridview2);
 		
         TextView tvCategory = (TextView) findViewById(R.id.categoryTxtView);
         Typeface digitalFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/titillium15l.ttf");

@@ -57,6 +57,7 @@
 				android:horizontalSpacing="10dp" android:scrollbars="none" 
 				android:paddingLeft="20dip" 
 				android:paddingRight="20dip"
+				android:paddingBottom="@dimen/dock_height"
 				android:layout_weight="0"/>
 		</LinearLayout>
 	</android.widget.MyScrollView>
@@ -70,8 +71,5 @@
 	
 	
 	<include layout="@layout/dock" android:id="@+id/dock"/> 
-	
-	
-
 
 </FrameLayout>
