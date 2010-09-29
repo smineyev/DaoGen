@@ -4,7 +4,7 @@
 	android:layout_height="fill_parent">
 
 	<android.widget.MyScrollView android:id="@+id/scrollview"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:layout_height="470dip"
 		android:scrollbarThumbVertical="@drawable/scrollbar_vertical"
 		android:background="@drawable/background_launcher" 
 		android:layout_marginBottom="@dimen/scrollview_bottom_offset">
@@ -52,11 +52,12 @@
 				/>
 
 			<android.widget.MyGridView android:id="@+id/gridview2"
-				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_width="fill_parent" android:layout_height="450dip"
 				android:numColumns="4" android:verticalSpacing="10dp"
 				android:horizontalSpacing="10dp" android:scrollbars="none" 
 				android:paddingLeft="20dip" 
 				android:paddingRight="20dip"
+				android:paddingBottom="@dimen/dock_height"
 				android:layout_weight="0"/>
 		</LinearLayout>
 	</android.widget.MyScrollView>
@@ -66,12 +67,9 @@
 		android:layout_height="wrap_content" 
 		android:layout_gravity="bottom" 
 		android:src="@drawable/shw_scrollview_bottom"
-		android:layout_marginBottom="@dimen/scrollview_shadow_bottom_offset"></ImageView>
+		android:layout_marginBottom="@dimen/scrollview_shadow_bottom_offset"/>
 	
 	
 	<include layout="@layout/dock" android:id="@+id/dock"/> 
-	
-	
-
 
 </FrameLayout>
